@@ -10,7 +10,7 @@ export default function RegisterPage() {
     const [message, setMessage] = useState("Verifying email...");
 
     useEffect(() => {
-        const token = searchParams.get("token"); // Get token from URL
+        const token = searchParams.get("token");
         if (!token) {
             setMessage("Invalid token.");
             return;
