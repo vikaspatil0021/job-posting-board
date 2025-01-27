@@ -23,7 +23,7 @@ const formSchema = z.object({
         .regex(/[A-Z]/, { message: "Password must contain at least one uppercase letter." })
         .regex(/[a-z]/, { message: "Password must contain at least one lowercase letter." })
         .regex(/[0-9]/, { message: "Password must contain at least one number." })
-        .regex(/[\W_]/, { message: "Password must contain at least one special character." }),
+        .regex(/[\W_]/, { message: "Password must contain at least one special character." })
 })
 
 
@@ -77,7 +77,7 @@ export default function LoginForm() {
                 <Button type="submit">Submit</Button>
                 <div>
                     <span>
-                        Don't have an account?
+                        Dont have an account?
                     </span>
                     <Link href="/register" className="text-black/70 underline font-semibold px-2">
                         Register here
