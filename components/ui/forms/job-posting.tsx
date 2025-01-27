@@ -61,7 +61,7 @@ export default function NewJobPostForm() {
     function onSubmit(values: z.infer<typeof formSchema>) {
         setLoading(true);
 
-        let candidates = values.candidates
+        const candidates = values.candidates
             .split(/[,|\n|\s]+/)
             .map((email) => email.trim())
 
