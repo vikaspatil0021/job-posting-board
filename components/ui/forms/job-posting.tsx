@@ -24,6 +24,7 @@ import {
 import { Textarea } from "../textarea";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { useRouter } from "next/navigation";
 
 
 const formSchema = z.object({
@@ -44,6 +45,8 @@ const formSchema = z.object({
 
 
 export default function NewJobPostForm() {
+    const router = useRouter();
+
     const { toast } = useToast()
 
     const [loading, setLoading] = useState(false);
@@ -84,6 +87,7 @@ export default function NewJobPostForm() {
                 toast({
                     title: data.message,
                 })
+                router.push("/")
             })
             .catch((err) => {
                 console.log(err);
