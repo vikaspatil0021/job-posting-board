@@ -16,7 +16,7 @@ export default function RegisterPage() {
             return;
         }
 
-        fetch("http://localhost:5000/api/auth/verify_email", {
+        fetch("https://jbp-backend.onrender.com/api/auth/verify_email", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

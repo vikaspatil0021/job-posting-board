@@ -9,7 +9,7 @@ export default function LoginPage() {
     useEffect(() => {
         const verifyToken = async () => {
             try {
-                const response = await fetch("http://localhost:5000/api/auth/verify_session", {
+                const response = await fetch("https://jbp-backend.onrender.com/api/auth/verify_session", {
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",

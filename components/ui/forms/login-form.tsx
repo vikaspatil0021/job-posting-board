@@ -45,7 +45,7 @@ export default function LoginForm() {
     function onSubmit(data: z.infer<typeof formSchema>) {
         setLoading(true);
         
-        fetch("http://localhost:5000/api/auth/login", {
+        fetch("https://jbp-backend.onrender.com/api/auth/login", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
