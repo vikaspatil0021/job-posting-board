@@ -20,7 +20,7 @@ export default function RegisterPage() {
                 if (response.ok) {
                     const data = await response.json();
                     if (data.success) {
-                        router.push("/dashboard");
+                        router.push("/");
                     }
                 }
             } catch (error) {
