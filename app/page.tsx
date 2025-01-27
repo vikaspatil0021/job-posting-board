@@ -119,7 +119,7 @@ export default function Home() {
       </div>
       <div className="flex-col items-center justify-center ">
         {
-          job_data.map((each: Job, index) => {
+          job_data.length != 0 && job_data.map((each: Job, index) => {
             return (
               <>
                 <div key={each._id} className="flex justify-between mx-auto w-1/2 py-2">
