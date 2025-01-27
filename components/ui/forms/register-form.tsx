@@ -14,6 +14,8 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import Link from "next/link";
+import { useToast } from "@/hooks/use-toast";
+import { useState } from "react";
 
 
 const formSchema = z.object({
@@ -38,6 +40,10 @@ const formSchema = z.object({
 
 
 export default function RegisterForm() {
+  const { toast } = useToast()
+
+  const [loading,setLoading] = useState(false);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -49,8 +55,37 @@ export default function RegisterForm() {
   })
 
   function onSubmit(values: z.infer<typeof formSchema>) {
+    const data = {
+      name: values.name,
+      email: values.email,
+      password: values.password
+    }
 
-    console.log(values)
+    setLoading(true);
+
+    fetch("http://localhost:5000/api/auth/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }).then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setLoading(false)
+        toast({
+          title: data.message,
+        })
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoading(false)
+        toast({
+          variant:'destructive',
+          title: err.message,
+        });
+      });
+
   }
 
   return (
@@ -113,7 +148,7 @@ export default function RegisterForm() {
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+        <Button type="submit">{loading ? "Sending.." :"Submit"}</Button>
         <div>
           <span>
             Already have an account?
