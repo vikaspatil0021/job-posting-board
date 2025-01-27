@@ -17,11 +17,8 @@ export default function Home() {
           credentials: "include",
         });
 
-        if (response.ok) {
-          const data = await response.json();
-          if (!data.success) {
+        if (response.status == 401) {
             router.push("/login");
-          }
         }
       } catch (error) {
         console.log("Error verifying token:", error);
